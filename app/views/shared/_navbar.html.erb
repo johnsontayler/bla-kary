@@ -1,7 +1,8 @@
 <div class="navbar-red-alert">
+  <%= link_to "Schedule Your Ride Today!", "#", class: "nav-link" %>
 </div>
 <div class="navbar navbar-expand-sm navbar-light navbar-custom">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "https://static1.squarespace.com/static/5dabd56c073ce72706c5831e/t/5db3afc54fbade21d17c4c8c/1575032170506/?format=1500w" %>
   <% end %>
 
@@ -28,7 +29,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "HOME", new_user_session_path, class: "nav-link" %>
+          <%= link_to "HOME", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "DRIVERS", new_user_session_path, class: "nav-link" %>
@@ -37,13 +38,13 @@
           <%= link_to "RIDERS", new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ABOUT", new_user_session_path, class: "nav-link" %>
+          <%= link_to "ABOUT", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "CONTACT", new_user_session_path, class: "nav-link" %>
+          <%= link_to "CONTACT", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "FEEDBACK", new_user_session_path, class: "nav-link" %>
+          <%= link_to "FEEDBACK", "/", class: "nav-link" %>
         </li>
         <li class="nav-item nav-login">
           <%= link_to "LOGIN", new_user_session_path, class: "nav-link" %>
