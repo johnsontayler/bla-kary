@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+
+.footer {
+  background: black;
+  text-align: center;
+  padding: 40px 0px;
+
+  .socials {
+    font-size: 2rem;
+    margin-bottom: 20px;
+
+    a {
+      margin-right: 20px;
+    }
+
+    a:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .Footer-business-info {
+    font-size: 13px;
+    letter-spacing: .06em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    font-family: 'Fjalla One', sans-serif;
+    
+    .Footer-business-info-item {
+      display: inline-block;
+    }
+
+    .Footer-business-info-item--name {
+      color: #52c2c8;
+      padding-right: .618em;
+    }
+
+    .Footer-business-info-item--phone {
+      padding-right: .618em;
+    }
+  }
+}
