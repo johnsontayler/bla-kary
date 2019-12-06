@@ -1,6 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
 
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
@@ -8,7 +10,11 @@ html {
 body {
   height: 100%;
   color: white;
-  background-color: black;
+  background-color: white;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
 }
 
 a, a:hover {
