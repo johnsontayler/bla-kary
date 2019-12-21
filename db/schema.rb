@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_183333) do
+ActiveRecord::Schema.define(version: 2019_12_21_191412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,21 @@ ActiveRecord::Schema.define(version: 2019_12_21_183333) do
     t.string "last_name"
     t.string "photo"
     t.string "address"
-    t.integer "weekly_schedule"
+    t.bigint "weekly_schedule_id"
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true
+    t.index ["weekly_schedule_id"], name: "index_riders_on_weekly_schedule_id"
+  end
+
+  create_table "rides", force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.string "pick_up"
+    t.string "drop_off"
+    t.bigint "weekly_schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weekly_schedule_id"], name: "index_rides_on_weekly_schedule_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +72,12 @@ ActiveRecord::Schema.define(version: 2019_12_21_183333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weekly_schedules", force: :cascade do |t|
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "riders", "weekly_schedules"
+  add_foreign_key "rides", "weekly_schedules"
 end
