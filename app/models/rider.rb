@@ -5,6 +5,7 @@ class Rider < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :weekly_schedule
+  has_many :rides, through: :weekly_schedule
 
   validates :first_name, presence: true
   validates :last_name, presence: true

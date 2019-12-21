@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_191412) do
+ActiveRecord::Schema.define(version: 2019_12_21_193948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,8 @@ ActiveRecord::Schema.define(version: 2019_12_21_191412) do
     t.string "last_name"
     t.string "photo"
     t.string "address"
-    t.bigint "weekly_schedule_id"
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true
-    t.index ["weekly_schedule_id"], name: "index_riders_on_weekly_schedule_id"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -76,8 +74,10 @@ ActiveRecord::Schema.define(version: 2019_12_21_191412) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "rider_id"
+    t.index ["rider_id"], name: "index_weekly_schedules_on_rider_id"
   end
 
-  add_foreign_key "riders", "weekly_schedules"
   add_foreign_key "rides", "weekly_schedules"
+  add_foreign_key "weekly_schedules", "riders"
 end
