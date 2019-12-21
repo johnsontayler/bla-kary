@@ -4,7 +4,7 @@ class Rider < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :weekly_schedule
+  has_many :weekly_schedules, through: :weekly_schedule
   has_many :rides, through: :weekly_schedule
 
   validates :first_name, presence: true
