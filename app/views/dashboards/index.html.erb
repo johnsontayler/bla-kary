@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;">
-  <h2 style="color: white;"><%= current_user.first_name %>'s Dashboard</h1>
+  <h2 style="color: white;">Dashboard</h1>
 
   <div class="row">
 
@@ -35,9 +35,9 @@
           <h3 class="navbar-brand" style="font-size: 32px;">MY MEAL OF THE DAY</h3>
 
           <div class="d-flex justify-space-around">
-            <% if @weekly_listing.nil? %>
+            <% if @weekly_schedule.nil? %>
               <div class="card text-center p-3 mr-2" style="width: 500px;"><br><br>
-                <p>[Please set your weekly listing of the day]</p>
+                <p>[Please set your weekly schedule of the day]</p>
               </div>
             <% else %>
               <div><%= render 'components/dashboard_card', meals: [current_user.daily_meal] %></div>

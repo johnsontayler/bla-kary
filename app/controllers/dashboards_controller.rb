@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
   def index
-    @weekly_listing = nil
+    @weekly_schedule = nil
   end
 
   def update

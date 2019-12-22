@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2019_12_22_162901) do
     t.string "pick_up"
     t.string "drop_off"
     t.bigint "rider_id"
-    t.bigint "weekly_listing_id"
+    t.bigint "weekly_schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["weekly_listing_id"], name: "index_rides_on_weekly_listing_id"
+    t.index ["weekly_schedule_id"], name: "index_rides_on_weekly_schedule_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_162901) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "weekly_listings", force: :cascade do |t|
+  create_table "weekly_schedules", force: :cascade do |t|
     t.date "beginning_of_week"
     t.date "end_of_week"
     t.bigint "rider_id"
@@ -51,5 +51,5 @@ ActiveRecord::Schema.define(version: 2019_12_22_162901) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "rides", "weekly_listings"
+  add_foreign_key "rides", "weekly_schedules"
 end

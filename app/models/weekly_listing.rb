@@ -1,4 +1,4 @@
-class WeeklyListing < ApplicationRecord
+class WeeklySchedule < ApplicationRecord
   belongs_to :rider
   has_many :rides
 end
