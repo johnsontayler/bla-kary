@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :drivers
-  devise_for :riders
-  
+  devise_for :users
+
   resources :dashboards, only: [ :index, :update ]
   
-  root to: 'pages#home'
+  root to: 'dashboards#index'
 end
