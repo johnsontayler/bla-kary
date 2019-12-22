@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :dashboards, only: [ :index, :update ]
   
-  root to: 'dashboards#index'
+  root to: 'pages#home'
+  get '/home', to: 'dashboards#index'
 end
