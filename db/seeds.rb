@@ -8,4 +8,4 @@
 
 Rider.destroy_all
 
-Rider.create(first_name: "Tayler", last_name: "Johnson", address: "427 N Irving Blvd", email: "johnsontayler@me.com", password: "123456")
+Rider.create(first_name: "Tayler", last_name: "Johnson", address: "427 N Irving Blvd", photo: 'https://avatars2.githubusercontent.com/u/51970661?s=460&v=4', email: "johnsontayler@me.com", password: "123456")

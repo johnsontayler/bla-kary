@@ -1,2 +1,54 @@
-<h1>Dashboards#index</h1>
-<p>Find me in app/views/dashboards/index.html.erb</p>
+<div class="container" style="text-align: center;">
+  <h2 style="color: white;"><%= current_user.first_name %>'s Dashboard</h1>
+
+  <div class="row">
+
+    <div class="col-4">
+    <! --- Profile bar ---->
+      <div class="card-prof-bar p-3 mt-3 mb-3">
+
+        <! --- Header ---->
+        <div class="cards-prof-bar">
+          <%= image_tag (current_user.photo), class: "avatar-dashboard" %>
+          <div class="card-profile">
+            <p class="mb-1"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
+          </div>
+        </div>
+
+        <! --- Order cards ---->
+        <div class="cards-prof-bar">
+          <div class="card-prof-bar">
+            <i class="far fa-file-alt"></i>
+            <h3>5</h3>
+            <p>Proposals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8">
+    <! --- Meal & orders section ---->
+      <div class="card-dash p-3 mt-3 mb-3">
+
+        <div class="card p-2 mb-3 text-center">
+
+          <h3 class="navbar-brand" style="font-size: 32px;">MY MEAL OF THE DAY</h3>
+
+          <div class="d-flex justify-space-around">
+            <% if @weekly_listing.nil? %>
+              <div class="card text-center p-3 mr-2" style="width: 500px;"><br><br>
+                <p>[Please set your weekly listing of the day]</p>
+              </div>
+            <% else %>
+              <div><%= render 'components/dashboard_card', meals: [current_user.daily_meal] %></div>
+            <% end %>
+          </div>
+          <br><br>
+          <h4 class="text-left navbar-brand" style="font-size: 20px;">TODAY'S ORDERS</h4>
+          <div class="card p-3 mb-3 text-center">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
