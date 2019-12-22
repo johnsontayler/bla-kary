@@ -4,6 +4,9 @@ class Rider < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :rides
+  has_one :weekly_listing
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true

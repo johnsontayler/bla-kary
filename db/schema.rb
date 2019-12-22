@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_183333) do
+ActiveRecord::Schema.define(version: 2019_12_22_155414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,21 @@ ActiveRecord::Schema.define(version: 2019_12_21_183333) do
     t.string "last_name"
     t.string "photo"
     t.string "address"
-    t.integer "weekly_schedule"
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true
+  end
+
+  create_table "rides", force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.string "pick_up"
+    t.string "drop_off"
+    t.bigint "rider_id"
+    t.bigint "weekly_listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rider_id"], name: "index_rides_on_rider_id"
+    t.index ["weekly_listing_id"], name: "index_rides_on_weekly_listing_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +72,16 @@ ActiveRecord::Schema.define(version: 2019_12_21_183333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weekly_listings", force: :cascade do |t|
+    t.date "beginning_of_week"
+    t.date "end_of_week"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "rider_id"
+    t.index ["rider_id"], name: "index_weekly_listings_on_rider_id"
+  end
+
+  add_foreign_key "rides", "riders"
+  add_foreign_key "rides", "weekly_listings"
+  add_foreign_key "weekly_listings", "riders"
 end
