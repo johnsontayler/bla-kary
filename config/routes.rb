@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :drivers
-  devise_for :riders
   devise_for :users
+
+  resources :dashboards, only: [ :index, :update ]
+  
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/home', to: 'dashboards#index'
 end

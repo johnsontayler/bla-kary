@@ -10,42 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_155414) do
+ActiveRecord::Schema.define(version: 2019_12_22_162901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "drivers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "photo"
-    t.string "address"
-    t.index ["email"], name: "index_drivers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true
-  end
-
-  create_table "riders", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "photo"
-    t.string "address"
-    t.index ["email"], name: "index_riders_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true
-  end
 
   create_table "rides", force: :cascade do |t|
     t.date "date"
@@ -56,7 +24,6 @@ ActiveRecord::Schema.define(version: 2019_12_22_155414) do
     t.bigint "weekly_listing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rider_id"], name: "index_rides_on_rider_id"
     t.index ["weekly_listing_id"], name: "index_rides_on_weekly_listing_id"
   end
 
@@ -68,6 +35,10 @@ ActiveRecord::Schema.define(version: 2019_12_22_155414) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "photo"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -75,13 +46,10 @@ ActiveRecord::Schema.define(version: 2019_12_22_155414) do
   create_table "weekly_listings", force: :cascade do |t|
     t.date "beginning_of_week"
     t.date "end_of_week"
+    t.bigint "rider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "rider_id"
-    t.index ["rider_id"], name: "index_weekly_listings_on_rider_id"
   end
 
-  add_foreign_key "rides", "riders"
   add_foreign_key "rides", "weekly_listings"
-  add_foreign_key "weekly_listings", "riders"
 end
