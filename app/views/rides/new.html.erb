@@ -1,2 +1,17 @@
-<h1>Rides#new</h1>
-<p>Find me in app/views/rides/new.html.erb</p>
+<% today = Date.today %>
+<% current_week = [*today.at_beginning_of_week..today.at_end_of_week] %>
+<% @days_from_current_week = current_week.map {|date| date.strftime("%a, %m/%d/%Y")} %>
+
+<%= simple_form_for(@ride) do |f| %>
+  <%= f.input :date, collection: @days_from_current_week, include_blank: false%>
+
+  <%= f.input :time %>
+
+  <%= f.input :pick_up %>
+
+  <%= f.input :drop_off %>
+
+  <%= f.input :price %>
+
+  <%= f.submit "Submit", class: "col-12 btn btn-danger"%>
+<% end %>
