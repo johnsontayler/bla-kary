@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [ :index, :show, :edit, :update ]
+  resources :riders, only: [ :index ]
   resources :dashboards, only: [ :index, :update ]
   resources :rides, only: [:index, :new, :create, :update]
   

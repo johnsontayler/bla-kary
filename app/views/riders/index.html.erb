@@ -1,0 +1,26 @@
+<% @date = Date.today.at_beginning_of_week %>
+<% @current_week = @date.strftime("%A, %m/%d/%Y") %>
+
+<div class="container">
+  <h2 style="color: white; text-align: center;">Riders</h1>
+  
+  <h3 class="mt-4">Week of <%= @current_week %></h1>
+  <% @riders.each  do |rider| %>
+    <div class="rider-card">
+      <%= image_tag (rider.photo), class: "avatar-large" %>
+      <div class="rider-card-content">
+        <p><small><%= rider.first_name%> <%= rider.last_name%></small></p>
+        <% @total_price = 0 %>
+        <% @weekly_schedule = rider.rides.where(weekly_schedule: true) %>
+        <% @weekly_schedule.each { |ride| @total_price += ride.price } %>
+        <p>Rides: <%= @weekly_schedule.count %> | Total Price: $<%= @total_price %> </p>
+      </div>
+
+      <div class="rider-card-actions">
+        <a href="#">Bid <i class="far fa-flag"></i></a>
+        <a href="#">Save <i class="far fa-heart"></i></a>
+      </div>
+    </div>
+  <% end %>
+
+</div>
