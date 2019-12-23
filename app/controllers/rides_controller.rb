@@ -2,15 +2,11 @@ class RidesController < ApplicationController
   def index
   end
 
-  def new
-    @ride = Ride.new
-  end
-
   def create
+    @user = Rider.find(current_user.id)
     @ride = Ride.new(ride_params)
-    @ride.rider = current_user
-    @ride.save
-    redirect_to dashboards_path
+    @ride.rider = @user
+    redirect_to dashboards_path if @ride.save
   end
 
   def edit
