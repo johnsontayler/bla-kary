@@ -39,7 +39,12 @@
           </div>
           <div class="form-group row">
             <div class="col-12">
-              <input class="form-control" type="date" placeholder="2011-08-19" id="example-date-input">
+              <select class="custom-select" required>
+                <option value="">Date</option>
+                <option value="1"><% Date.today.beginning_of_week %></option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -62,15 +67,19 @@
 
           <div>
             <% if @weekly_schedule.nil? %>
+              <% @weekly_schedule.rides.each do |ride| %>
+                <div class="card">
+                  <div class="card-body d-flex justify-content-around align-items-center" style="padding: 0.50rem;">
+                    <p>TIME: <%= ride.time %></p>
+                    <p>PICK UP: <%= ride.pick_up %></p>
+                    <p>DROP OFF: <%= ride.drop_off %></p>
+                    <%= link_to ride_path(ride), style: "color: red;", method: :patch do %>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </div>
+                </div> 
+              <% end %>
               <p>Sunday 12/22/19</p>
-              <div class="card">
-                <div class="card-body d-flex justify-content-around align-items-center" style="padding: 0.50rem;">
-                <p>TIME: 9:00AM</p>
-                <p>PICK UP: 427 N Irving Blvd</p>
-                <p>DROP OFF: 509 Myrtle Ct</p>
-                <i class="fas fa-times" style="color: red;"></i>
-                </div>
-              </div> 
               <div class="card">
                 <div class="card-body d-flex justify-content-around align-items-center" style="padding: 0.50rem;">
                 <p>TIME: 9:00AM</p>

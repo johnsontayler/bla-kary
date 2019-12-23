@@ -6,7 +6,7 @@ class CreateRides < ActiveRecord::Migration[5.2]
       t.string :pick_up
       t.string :drop_off
       t.bigint :rider_id
-      t.references :weekly_schedule, foreign_key: true
+      t.boolean :weekly_schedule, default: true
 
       t.timestamps
     end
