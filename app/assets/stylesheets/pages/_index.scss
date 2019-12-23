@@ -23,3 +23,13 @@ p {
 a, a:hover {
   color: white;
 }
+
+.container {
+  max-width: 1065px;
+}
+
+@media (min-width: 992px) {
+  .container {
+     max-width: 1065px;
+  }
+}
