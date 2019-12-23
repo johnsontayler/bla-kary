@@ -5,7 +5,7 @@
 <%= simple_form_for(@ride) do |f| %>
   <%= f.input :date, collection: @days_from_current_week, include_blank: false%>
 
-  <%= f.input :time %>
+  <%= f.input :time, html5: true %>
 
   <%= f.input :pick_up %>
 
