@@ -2,13 +2,10 @@ class RidesController < ApplicationController
   def index
   end
 
-  def new
-    @ride = Ride.new
-  end
-
   def create
+    @user = Rider.find(current_user.id)
     @ride = Ride.new(ride_params)
-    @ride.rider = current_user
+    @ride.rider = @user
     @ride.save
     redirect_to dashboards_path
   end
@@ -25,6 +22,6 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:date, :time, :pick_up, :drop_off, :price)
+    params.require(:ride).permit(:date.to_date, :time, :pick_up, :drop_off, :price)
   end
 end

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_162901) do
     t.time "time"
     t.string "pick_up"
     t.string "drop_off"
-    t.integer "price"
+    t.float "price"
     t.bigint "rider_id"
     t.boolean "weekly_schedule", default: true
     t.datetime "created_at", null: false
