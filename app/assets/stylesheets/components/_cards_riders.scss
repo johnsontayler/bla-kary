@@ -1,0 +1,49 @@
+.rider-card {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.rider-card .rider-card-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.rider-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.rider-card small {
+  color: black;
+  font-weight: bold;
+  transition: ease .3s;
+}
+
+.rider-card:hover small {
+  color: red;
+}
+
+.rider-card .rider-card-actions {
+  opacity: 0.6;
+  display: flex;
+  transition: ease .3s;
+}
+
+.rider-card:hover .rider-card-actions {
+  opacity: 1;
+}
+
+.rider-card .rider-card-actions a {
+  color: red;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.rider-card .rider-card-actions a:hover {
+  text-decoration: none;
+}
