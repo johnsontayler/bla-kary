@@ -9,12 +9,15 @@ html {
 
 body {
   height: 100%;
-  color: white;
   background-color: white;
 }
 
 h1, h2 {
   font-family: 'Playfair Display', serif;
+}
+
+p {
+  margin: 0;
 }
 
 a, a:hover {
