@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
   devise_for :users
 
+  resources :users, only: [ :index, :show, :edit, :update ]
   resources :dashboards, only: [ :index, :update ]
   resources :rides, only: [:index, :new, :create, :update]
   
