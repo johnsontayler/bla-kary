@@ -32,26 +32,40 @@
 
     <div class="col-8">
     <! --- Weekly Schedule ---->
+      <% today = Date.today %>
+      <% current_week = [*today.at_beginning_of_week..today.at_end_of_week] %>
+      <% @days_from_current_week = current_week.map {|date| date.strftime("%A, %m/%d/%Y")} %>
+
       <div class="card-dash p-3 mt-3 mb-3">
 
         <div class="card p-2">
-
-          <h3 class="navbar-brand" style="font-size: 32px;">WEEKLY SCHEDULE</h3>
+          <div class="d-flex justify-content-between">
+          <h3 style="font-size: 32px;">WEEKLY SCHEDULE</h3>
+          <% @price = 0 %>
+          <% @weekly_schedule.each { |ride| @price += ride.price }  %>
+          <p>Price: $<%= @price %> </p>
+          </div>
+          <br>
 
           <div>
             <% if @weekly_schedule %>
-              <p>Sunday 12/22/19</p>
-              <% @weekly_schedule.each do |ride| %>
-                <div class="card">
-                  <div class="card-body d-flex justify-content-around align-items-center" style="padding: 0.50rem;">
-                    <p>TIME: <%= ride.time.strftime("%I:%M%p") %></p>
-                    <p>PICK UP: <%= ride.pick_up %></p>
-                    <p>DROP OFF: <%= ride.drop_off %></p>
-                    <%= link_to ride_path(ride), style: "color: red;", method: :patch do %>
-                      <i class="fas fa-times"></i>
-                    <% end %>
-                  </div>
-                </div> 
+              <% @days_from_current_week.each do |date| %>
+                <p><%= date %></p>
+                <% @weekly_schedule.each do |ride| %>
+                  <% if ride.date == date %>
+                    <div class="card">
+                      <div class="card-body d-flex justify-content-around align-items-center" style="padding: 0.50rem;">
+                        <p>TIME: <%= ride.time.strftime("%I:%M%p") %></p>
+                        <p>PICK UP: <%= ride.pick_up %></p>
+                        <p>DROP OFF: <%= ride.drop_off %></p>
+                        <%= link_to ride_path(ride), style: "color: red;", method: :patch do %>
+                          <i class="fas fa-times"></i>
+                        <% end %>
+                      </div>
+                    </div> 
+                  <% end %>
+                <% end %>
+                <br>
               <% end %>
             <% end %>
           </div>
