@@ -13,6 +13,7 @@ class RidesController < ApplicationController
 
   def update
     @ride = Ride.find(params[:id])
-    @ride.update!(weekly_schedule: !@ride.weekly_schedule)
+    @ride.update!(weekly_schedule: false)
+    redirect_to dashboards_path
   end
 end

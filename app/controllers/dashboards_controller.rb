@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def index
-    @weekly_schedule = nil
+    rider = Rider.find(current_user.id)
+    @weekly_schedule = rider.rides.where(weekly_schedule: true)
   end
 
   def update
