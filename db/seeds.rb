@@ -11,6 +11,6 @@ Ride.destroy_all
 
 tayler = Rider.create!(first_name: "Tayler", last_name: "Johnson", address: "427 N Irving Blvd", photo: 'https://avatars2.githubusercontent.com/u/51970661?s=460&v=4', email: "johnsontayler@me.com", password: "123456")
 
-15.times do 
-  Ride.create!(date: Date.today, time: Time.now, pick_up: "427 N Irving Blvd", drop_off: "509 Myrtle Ct", price: 20, rider: tayler)
+6.times do 
+  Ride.create!(date: "Monday, 12/23/2019", time: Time.now, pick_up: "427 N Irving Blvd", drop_off: "509 Myrtle Ct", price: 20, rider: tayler)
 end

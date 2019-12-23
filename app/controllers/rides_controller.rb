@@ -6,7 +6,7 @@ class RidesController < ApplicationController
     @user = Rider.find(current_user.id)
     @ride = Ride.new(ride_params)
     @ride.rider = @user
-    redirect_to dashboards_path if @ride.save
+    redirect_to "/home" if @ride.save
   end
 
   def edit
@@ -15,7 +15,7 @@ class RidesController < ApplicationController
   def update
     @ride = Ride.find(params[:id])
     @ride.update!(weekly_schedule: false)
-    redirect_to dashboards_path
+    redirect_to "/home"
   end
 
   private

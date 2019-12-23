@@ -5,7 +5,6 @@ class DashboardsController < ApplicationController
 
     only_rides_of_current_week
     @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:time]}
-    debugger
   end
 
   def update
