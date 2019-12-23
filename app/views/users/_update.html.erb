@@ -1,0 +1,5 @@
+<% if current_user.schedule_submitted %>
+  <%= button_to "Edit", current_user, method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+<% else %>
+  <%= button_to "Submit", current_user, method: :patch, class: "btn-sm btn-danger ml-2" %>
+<% end %>

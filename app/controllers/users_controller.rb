@@ -9,5 +9,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = current_user
+    user.update(schedule_submitted: !user.schedule_submitted)
+    redirect_to "/home"
   end
 end
