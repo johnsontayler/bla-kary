@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+- Install Ruby, Homebrew, Bundler, Yarn
+- Run: brew install rbenv
+- Run:
