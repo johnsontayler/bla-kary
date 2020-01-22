@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
     @rider = Rider.find(current_user.id)
 
     only_rides_of_current_week
-    @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:time]}
+    @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:created_at]}
   end
 
   def update

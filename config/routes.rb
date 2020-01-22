@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :riders, only: [ :index ]
   resources :dashboards, only: [ :index, :update ]
   resources :rides, only: [:index, :new, :create, :update]
+  resources :contracts, only: [:index, :show, :new, :create, :update, :destroy]
   
   root to: 'pages#landing'
   get '/home', to: 'dashboards#index'
