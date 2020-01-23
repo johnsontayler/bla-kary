@@ -4,7 +4,7 @@
     <div class="card-prof-bar">
       <i class="far fa-file-alt" style="color: red;"></i>
       <br>
-      <h3 style="color: black;">5 Contract Bids</h3>
+      <h3 style="color: black;"><%= contract_bids.count %> Contract Bid(s)</h3>
     </div>
   </div>
 </a>
@@ -21,12 +21,12 @@
       </div>
       <div class="modal-body">
         <ul style="list-style-type:none; padding-left: 0px; text-align: left;">
-          <% contractBids.each do |driver|  %>
+          <% contract_bids.each do |contract|  %>
             <br>
             <li class="profile-modal-li">
-              <%= link_to riders_path(driver), class: "nostyle" do  %>
-                <img src="<%= driver.photo %>" alt="" class="avatar">
-                <%= driver.first_name %> <%= driver.last_name %>
+              <%= link_to "#", class: "nostyle" do  %>
+                <img src="<%= contract.driver.photo %>" alt="" class="avatar">
+                <%= contract.driver.first_name %> <%= contract.driver.last_name %>
               <% end %>
             </li>
           <% end %>

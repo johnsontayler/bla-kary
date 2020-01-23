@@ -1,0 +1,9 @@
+<% @driver = Driver.find(current_user.id) %>
+
+<% if @driver.has_a_bid?(rider) %>
+  <%= render 'contracts/destroy', rider: rider %>
+<% else %>
+  <%= link_to rider_contracts_path(rider), style: "color: red;", remote: true, method: :post do %>
+      Bid <i class="far fa-flag"></i>
+  <% end %>
+<% end %>

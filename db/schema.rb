@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_01_22_225848) do
   enable_extension "plpgsql"
 
   create_table "contracts", force: :cascade do |t|
-    t.bigint "rider"
-    t.bigint "driver"
+    t.bigint "rider_id"
+    t.bigint "driver_id"
     t.boolean "bid", default: true
     t.boolean "accepted"
     t.boolean "denied"
