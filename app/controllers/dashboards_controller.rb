@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
   def index
     @ride = Ride.new
     @rider = Rider.find(current_user.id)
+    @riders = Rider.where(schedule_submitted: true)
 
     only_rides_of_current_week
     @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:created_at]}
