@@ -23,11 +23,13 @@
         <ul style="list-style-type:none; padding-left: 0px; text-align: left;">
           <% contract_bids.each do |contract|  %>
             <br>
-            <li class="profile-modal-li">
+            <li class="d-flex justify-content-around align-items-center profile-modal-li" style= "color: black;">
               <%= link_to "#", class: "nostyle" do  %>
                 <img src="<%= contract.driver.photo %>" alt="" class="avatar">
-                <%= contract.driver.first_name %> <%= contract.driver.last_name %>
               <% end %>
+              <%= contract.driver.first_name %> <%= contract.driver.last_name %>
+              <%= button_to "Accept", accepted_contract_path(contract.driver), method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+              <%= button_to "Deny", denied_contract_path(contract.driver), method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
             </li>
           <% end %>
         </ul>
