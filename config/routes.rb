@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :rides, only: [:index, :new, :create, :update]
   resources :contracts, only: [:index, :destroy ] do
     member do
-      patch :accepted
-      patch :denied
+      patch :rider_accepted
+      patch :rider_denied
+      patch :driver_accepted
+      patch :driver_denied
     end
   end
 

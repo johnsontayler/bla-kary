@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2020_01_22_225848) do
     t.bigint "rider_id"
     t.bigint "driver_id"
     t.boolean "bid", default: true
-    t.boolean "accepted"
-    t.boolean "denied"
+    t.boolean "rider_accepted"
+    t.boolean "rider_denied"
+    t.boolean "driver_accepted"
+    t.boolean "driver_denied"
     t.float "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
