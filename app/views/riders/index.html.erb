@@ -17,10 +17,13 @@
       </div>
 
       <div class="rider-card-actions">
-        <%= render 'contracts/create', rider: rider %>
+        <% if @driver.has_a_bid?(rider) %>
+          <%= render 'contracts/destroy', rider: rider %>
+        <% else %>
+          <%= render 'contracts/create', rider: rider %>
+        <% end %>
         <a href="#">Save <i class="far fa-heart"></i></a>
       </div>
     </div>
   <% end %>
-
 </div>
