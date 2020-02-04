@@ -23,13 +23,24 @@
         <ul style="list-style-type:none; padding-left: 0px; text-align: left;">
           <% contract_bids.each do |contract|  %>
             <br>
-            <li class="d-flex justify-content-around align-items-center profile-modal-li" style= "color: black;">
-              <%= link_to "#", class: "nostyle" do  %>
-                <img src="<%= contract.driver.photo %>" alt="" class="avatar">
-              <% end %>
-              <%= contract.driver.first_name %> <%= contract.driver.last_name %>
-              <%= button_to "Accept", accepted_contract_path(contract.driver), method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
-              <%= button_to "Deny", denied_contract_path(contract.driver), method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+            <li class="d-flex justify-content-between align-items-center profile-modal-li" style= "color: black;">
+              <div class="d-flex justify-content-between align-items-center">
+                <%= link_to "#", class: "nostyle mr-2" do  %>
+                  <img src="<%= contract.driver.photo %>" alt="" class="avatar">
+                <% end %>
+                <div class="d-flex flex-column">
+                  <%= contract.driver.first_name %> <%= contract.driver.last_name %>
+                  <div class="d-flex align-items-center" style="font-size: 10px;"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <% if contract.rider_denied %>
+                  <div class= "btn-sm btn-light ml-2" style= "background-color: #8f0d0d; color: white; border: 1px solid #8f0d0d;"> Denied </div>
+                <% else %>
+                  <%= button_to "Accept", rider_accepted_contract_path(contract.driver), remote: true, method: :patch, data: {:confirm => 'Accept this contract bid?'}, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+                  <%= button_to "Deny", rider_denied_contract_path(contract.driver), remote: true, method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+                <% end %>
+              </div>
             </li>
           <% end %>
         </ul>

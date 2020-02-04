@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
   def index
     @ride = Ride.new
     @rider = Rider.find(current_user.id)
-    @contract_bids = @rider.contracts.where(accepted: nil, denied: nil)
+    @contract_bids = @rider.contracts.where(rider_accepted: nil)
 
     only_rides_of_current_week
     @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:created_at]}
