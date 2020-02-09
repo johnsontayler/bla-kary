@@ -14,6 +14,7 @@
           <%= image_tag (current_user.photo), class: "avatar-dashboard" %>
           <div class="card-profile">
             <p class="mb-1"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
+            <p>Primary: <strong>Mobile</strong> / Social</p>
           </div>
         </div>
 
@@ -28,6 +29,32 @@
     </div>
 
     <div class="col-12 col-md-12 col-lg-8">
+    <! ---- Hired Driver ------>
+    <div class="d-flex justify-content-between">
+      <div class="rider-card" data-toggle="collapse" data-target="#collapseExample" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
+        <%= image_tag (current_user.photo), class: "avatar-large" %>
+        <div class="d-flex flex-column ml-3">
+          <p class="mb-1">Week's Driver</p>
+          <p>Tayler Johnson</p>
+          <div class="d-flex align-items-center" style="font-size: 10px;"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
+        </div>
+      </div>
+      <div class="rider-card" data-toggle="collapse" data-target="#collapseExample" style="color: white; width: 48%; background-image: linear-gradient(to bottom right, #b9a9a9, #3f3535);">
+        <div style="align-items: center; width: 56px; height: 56px; background: #504949; border-radius: 50%; display: flex; justify-content: center;">
+          <i class="fas fa-file-invoice-dollar" style="color: white; font-size: 26px;"></i>
+        </div>
+        <div class="d-flex flex-column ml-3">
+          <p class="mb-1">Contract</p>
+          <p>Details</p>
+          <div class="d-flex align-items-center" style="font-size: 10px;"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
+        </div>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
     <! --- Weekly Schedule ---->
       <% today = Date.today %>
       <% current_week = [*today.at_beginning_of_week..today.at_end_of_week] %>
@@ -36,14 +63,14 @@
       <div class="card-dash p-3 mt-3 mb-3">
 
         <div class="card p-2">
-          <div class="d-flex justify-content-between" style="background: red; padding: 14px; color: white;">
+          <div class="d-flex justify-content-between" style="background: red; padding: 14px; color: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
           <h3 style="font-size: 32px;">WEEKLY SCHEDULE</h3>
           <% @price = 0 %>
           <% @weekly_schedule.each { |ride| @price += ride.price }  %>
-          <div class="d-flex justify-content-between align-items-center">
-            <p>Total Price: $<%= @price %></p>
-            <%= render 'users/update' %>
-          </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <p>Total Price: $<%= @price %></p>
+              <%= render 'users/update' %>
+            </div>
           </div>
           <br>
 
