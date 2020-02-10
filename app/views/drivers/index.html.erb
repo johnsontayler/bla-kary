@@ -1,6 +1,20 @@
 <div class="container">
   <h2 class="mb-5" style="color: white; text-align: center;">Drivers</h1>
   
+  <form class="form-inline mt-2 mb-5">
+    <input class="form-control mr-sm-2" type="search" placeholder="City or Name" style="width: 80%">
+    <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+    <div class="btn-group ml-2">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort By
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Rating: High to Low</a>
+        <a class="dropdown-item" href="#">Distance: Near to Far</a>
+      </div>
+    </div>
+  </form>
+
   <div class="row mt-2" style="justify-content: center;">
     <% @drivers.each do |driver| %>
       <div class="driver-card" data-toggle="modal" data-target="#driverModal<%=driver.id%>" style="position: relative; margin-bottom: 18px; width: 14rem; height: 22rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; margin-right: 18px;">
@@ -25,7 +39,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">
-                Reviews <i class="fas fa-medal" style="font-size: 16px; margin-top: 4px;"></i>
+                <i class="fas fa-medal" style="font-size: 16px; margin-top: 4px;"></i> Reviews 
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

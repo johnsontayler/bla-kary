@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :rides, only: [:index, :new, :create, :update]
   
-  resources :contracts, only: [:index, :destroy ] do
+  resources :contracts, only: [:destroy ] do
     member do
       patch :rider_accepted
       patch :rider_denied

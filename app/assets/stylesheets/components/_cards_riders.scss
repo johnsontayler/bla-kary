@@ -7,7 +7,7 @@
   padding: 8px 16px;
   // border: 1px solid rgb(235,235,235);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 3px;;
+  border-radius: 3px;
 }
 
 .rider-card .rider-card-content {
@@ -23,17 +23,18 @@
 .rider-card small {
   color: black;
   font-weight: bold;
-  transition: ease .3s;
+  transition: ease 0.3s;
 }
 
 .rider-card:hover small {
   color: red;
+  cursor: pointer;
 }
 
 .rider-card .rider-card-actions {
   opacity: 0.6;
   display: flex;
-  transition: ease .3s;
+  transition: ease 0.3s;
 }
 
 .rider-card:hover .rider-card-actions {
