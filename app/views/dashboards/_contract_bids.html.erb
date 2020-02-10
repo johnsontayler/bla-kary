@@ -41,8 +41,8 @@
                 <% if contract.rider_denied %>
                   <div class= "btn-sm btn-light ml-2" style= "background-color: #8f0d0d; color: white; border: 1px solid #8f0d0d;"> Denied </div>
                 <% else %>
-                  <%= button_to "Accept", rider_accepted_contract_path(contract.driver), remote: true, method: :patch, data: {:confirm => 'Accept this contract bid?'}, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
-                  <%= button_to "Deny", rider_denied_contract_path(contract.driver), remote: true, method: :patch, class: "btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+                  <%= button_to "Accept", rider_accepted_contract_path(contract.driver), remote: true, method: :patch, data: {:confirm => 'Accept this contract bid?'}, class: "btn-accept btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
+                  <%= button_to "Deny", rider_denied_contract_path(contract.driver), remote: true, method: :patch, class: "btn-deny btn-sm btn-light ml-2", style: "color: red; border: 1px solid red;" %>
                 <% end %>
               </div>
             </li>
