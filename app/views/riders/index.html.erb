@@ -16,14 +16,16 @@
         <p>Rides: <%= @weekly_schedule.count %> | Total Price: $<%= @total_price %> </p>
       </div>
 
-      <div class="rider-card-actions">
-        <% if @driver.has_a_bid?(rider) %>
-          <%= render 'contracts/destroy', rider: rider %>
-        <% else %>
-          <%= render 'contracts/create', rider: rider %>
-        <% end %>
-        <a href="#">Save <i class="far fa-heart"></i></a>
-      </div>
+      <% if @driver %>
+        <div class="rider-card-actions">
+          <% if @driver.has_a_bid?(rider) %>
+            <%= render 'contracts/destroy', rider: rider %>
+          <% else %>
+            <%= render 'contracts/create', rider: rider %>
+          <% end %>
+          <a href="#">Save <i class="far fa-heart"></i></a>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

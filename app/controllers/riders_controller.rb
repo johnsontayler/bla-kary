@@ -1,7 +1,7 @@
 class RidersController < ApplicationController
   def index
     @riders = Rider.where(schedule_submitted: true).sort_by{|d| d[:time]}
-    @driver = Driver.find(current_driver.id)
+    @driver = Driver.find(current_driver.id) if current_driver
   end
 
   def update

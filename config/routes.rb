@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :riders, only: [:update]
 
+  resources :drivers, only: [:index, :show]
+
   resources :dashboards, only: [ :index, :update ]
 
   resources :rides, only: [:index, :new, :create, :update]

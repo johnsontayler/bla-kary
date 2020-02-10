@@ -23,14 +23,18 @@
         <ul style="list-style-type:none; padding-left: 0px; text-align: left;">
           <% contract_bids.each do |contract|  %>
             <br>
-            <li class="d-flex justify-content-between align-items-center profile-modal-li" style= "color: black;">
+            <li class="d-flex justify-content-between align-items-center profile-modal-li" data-toggle="collapse" data-target="#collapseBid<%= contract.id %>" style= "color: black;">
               <div class="d-flex justify-content-between align-items-center">
                 <%= link_to "#", class: "nostyle mr-2" do  %>
                   <img src="<%= contract.driver.photo %>" alt="" class="avatar">
                 <% end %>
                 <div class="d-flex flex-column">
                   <%= contract.driver.first_name %> <%= contract.driver.last_name %>
-                  <div class="d-flex align-items-center" style="font-size: 10px;"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
+                  <div class="d-flex justify-content-between" style="font-size: 10px;">
+                    <div class="d-flex align-items-center mr-2"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
+                    <p class="mr-2"><strong>Member:</strong> 3 Months</p>
+                    <p class="mr-2"><strong>Rides:</strong> 2,000</p>
+                  </div>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center">
@@ -42,6 +46,11 @@
                 <% end %>
               </div>
             </li>
+            <div class="collapse" id="collapseBid<%= contract.id %>" >
+              <div class="card card-body">
+                <%= contract.bid_comment %>
+              </div>
+            </div>
           <% end %>
         </ul>
       </div>

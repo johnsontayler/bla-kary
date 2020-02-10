@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_225848) do
     t.bigint "rider_id"
     t.bigint "driver_id"
     t.boolean "bid", default: true
+    t.text "bid_comment"
     t.boolean "rider_accepted"
     t.boolean "rider_denied"
     t.boolean "driver_accepted"
@@ -40,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_02_10_225848) do
     t.string "last_name"
     t.string "photo"
     t.string "address"
+    t.text "about"
+    t.string "phone_number"
     t.index ["email"], name: "index_drivers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true
   end
@@ -56,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_02_10_225848) do
     t.string "last_name"
     t.string "photo"
     t.string "address"
+    t.text "about"
+    t.string "phone_number"
     t.boolean "schedule_submitted", default: false
     t.index ["email"], name: "index_riders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true

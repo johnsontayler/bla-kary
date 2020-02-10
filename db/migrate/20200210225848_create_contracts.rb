@@ -4,6 +4,7 @@ class CreateContracts < ActiveRecord::Migration[5.2]
       t.bigint :rider_id
       t.bigint :driver_id
       t.boolean :bid, default: true
+      t.text :bid_comment
       t.boolean :rider_accepted
       t.boolean :rider_denied
       t.boolean :driver_accepted

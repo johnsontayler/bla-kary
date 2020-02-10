@@ -3,6 +3,10 @@ class DashboardsController < ApplicationController
     @ride = Ride.new
     @rider = Rider.find(current_rider.id)
     @contract_bids = @rider.contracts.where(rider_accepted: nil)
+    @contract_pending = @rider.contracts.where(rider_accepted: true, driver_accepted: nil, driver_denied: nil)
+
+    @contract_final = Contract.find_by(rider_id: @rider, rider_accepted: true, driver_accepted: true)
+    @hired_driver = @contract_final.driver if @contract_final
 
     only_rides_of_current_week
     @weekly_schedule = @rider.rides.where(weekly_schedule: true).sort_by{|d| d[:created_at]}

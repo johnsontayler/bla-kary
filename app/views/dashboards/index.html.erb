@@ -1,111 +1,154 @@
 
+<%if current_rider %>
 
-<div class="container">
-  <h2 style="color: white; text-align: center;">Dashboard</h1>
+  <div class="container">
+    <h2 style="color: white; text-align: center;">Dashboard</h1>
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-12 col-md-12 col-lg-4">
-    <! --- Profile bar ---->
-      <div class="card-prof-bar p-3 mt-3 mb-3" style="border: 4px solid black;">
+      <div class="col-12 col-md-12 col-lg-4">
+      <! --- Profile bar ---->
+        <div class="card-prof-bar p-3 mt-3 mb-3" style="border: 4px solid black;">
 
-        <! --- Header ---->
-        <div class="cards-prof-bar">
-          <%= image_tag (current_rider.photo), class: "avatar-dashboard" %>
-          <div class="card-profile">
-            <p class="mb-1"><strong><%= current_rider.first_name %> <%= current_rider.last_name %></strong></p>
-            <p>Contact: <strong>Mobile</strong> / Social</p>
-          </div>
-        </div>
-
-        <! --- Order cards ---->
-        <!-- contracts count / modal -->
-        <%= render 'contracts/index', contract_bids: @contract_bids %>
-
-        <! --- Add a Ride  --c-->
-        <h3>ADD A RIDE</h3>
-        <%= render 'rides/create', ride: @ride %>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-12 col-lg-8">
-    <! ---- Hired Driver ------>
-    <div class="d-flex justify-content-between">
-      <div class="rider-card" data-toggle="collapse" data-target="#collapseExample" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
-        <%= image_tag (current_rider.photo), class: "avatar-large" %>
-        <div class="d-flex flex-column ml-3">
-          <p class="mb-1">Week's Driver</p>
-          
-          <div class="d-flex align-items-end">
-            <p>Tayler Johnson</p> 
-            <div style="font-size: 10px;"><i class="fas fa-medal ml-2"></i> 4.8 </div>
-          </div>
-        </div>
-      </div>
-      <div class="rider-card" data-toggle="collapse" data-target="#collapseExample" style="color: white; width: 48%; background-image: linear-gradient(to bottom right, #b9a9a9, #3f3535);">
-        <div style="align-items: center; width: 56px; height: 56px; background: #504949; border-radius: 50%; display: flex; justify-content: center;">
-          <i class="fas fa-file-invoice-dollar" style="color: white; font-size: 26px;"></i>
-        </div>
-        <div class="d-flex flex-column ml-3">
-          <p class="mb-1">Contract</p>
-          <p>Details</p>
-          <div class="d-flex align-items-center" style="font-size: 10px;"><i class="fas fa-medal ml-1 mr-1"></i> 4.8 </div>
-        </div>
-      </div>
-    </div>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
-    <! --- Weekly Schedule ---->
-      <% today = "10/02/2020".to_date %>
-      <% current_week = [*today.at_beginning_of_week..today.at_end_of_week] %>
-      <% @days_from_current_week = current_week.map {|date| date.strftime("%A, %m/%d/%Y")} %>
-
-      <div class="card-dash p-3 mt-3 mb-3">
-
-        <div class="card p-2" style="border: none;">
-          <div class="d-flex justify-content-between" style="background: red; padding: 14px; color: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-          <h3 style="font-size: 32px;">WEEKLY SCHEDULE</h3>
-          <% @price = 0 %>
-          <% @weekly_schedule.each { |ride| @price += ride.price }  %>
-            <div class="d-flex justify-content-between align-items-center">
-              <p>Total Price: $<%= @price %></p>
-              <%= render 'riders/update' %>
+          <! --- Header ---->
+          <div class="cards-prof-bar">
+            <%= image_tag (current_rider.photo), class: "avatar-dashboard" %>
+            <div class="card-profile">
+              <p class="mb-1"><strong><%= current_rider.first_name %> <%= current_rider.last_name %></strong></p>
+              <div style="font-size: 12px">
+                <%= current_rider.phone_number%>
+                <div>Contact: <strong>Mobile</strong> / Social</div>
+              </div>
             </div>
           </div>
-          <br>
 
-          <div>
-            <% if @weekly_schedule %>
-              <% @days_from_current_week.each do |date| %>
-                <p><%= date %></p>
-                <% @weekly_schedule.each do |ride| %>
-                  <% if ride.date == date %>
-                    <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                      <div class="card-body d-flex align-items-center" style="padding: 0.50rem;">
-                        <div class="time-grey mr-3" style="background: #8080803d; padding: 16px;">
-                          <p><%= ride.time.strftime("%I:%M%p") %></p>
+          <! --- Contract Bids ---->
+          <!-- contracts count / modal -->
+          <% if !@hired_driver%>
+          <%= render 'contracts/index', contract_bids: @contract_bids %>
+          <% end %>
+
+          <! --- Add a Ride  --c-->
+          <h3>ADD A RIDE</h3>
+          <%= render 'rides/create', ride: @ride %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12 col-lg-8">
+        <! ---- Hired Driver ------>
+        <% if @contract_pending.exists? %>
+          <div class="d-flex justify-content-between">
+            <div class="rider-card" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
+              <div style="align-items: center; width: 56px; height: 56px; background: #a11212; border-radius: 50%; display: flex; justify-content: center;">
+                <i class="fas fa-question" style="color: white; font-size: 26px;"></i>
+              </div>
+              <div class="d-flex flex-column ml-3">
+                <p class="mb-1">Week's Driver</p>
+                <strong><p> ACCEPTANCE PENDING</p></strong>
+              </div>
+            </div>
+            <div class="rider-card" style="color: white; width: 48%; background-image: linear-gradient(to bottom right, #b9a9a9, #3f3535);">
+              <div style="align-items: center; width: 56px; height: 56px; background: #504949; border-radius: 50%; display: flex; justify-content: center;">
+                <i class="fas fa-file-invoice-dollar" style="color: white; font-size: 26px;"></i>
+              </div>
+              <div class="d-flex flex-column ml-3">
+                <p class="mb-1">Contract</p>
+                <strong><p>PENDING</p></strong>
+              </div>
+            </div>
+          </div>
+        <% elsif @hired_driver %>
+          <div class="d-flex justify-content-between">
+            <div class="rider-card" data-toggle="collapse" data-target="#collapseDriver" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
+              <%= image_tag (@hired_driver.photo), class: "avatar-large" %>
+              <div class="d-flex flex-column ml-3">
+                <p class="mb-1">Week's Driver</p>
+                
+                <div class="d-flex align-items-end">
+                  <%= @hired_driver.first_name%> <%= @hired_driver.last_name%>
+                  <div style="font-size: 10px;"><i class="fas fa-medal ml-2"></i> 4.8 </div>
+                </div>
+              </div>
+            </div>
+            <div class="rider-card" data-toggle="collapse" data-target="#collapseContract" style="color: white; width: 48%; background-image: linear-gradient(to bottom right, #b9a9a9, #3f3535);">
+              <div style="align-items: center; width: 56px; height: 56px; background: #504949; border-radius: 50%; display: flex; justify-content: center;">
+                <i class="fas fa-file-invoice-dollar" style="color: white; font-size: 26px;"></i>
+              </div>
+              <div class="d-flex flex-column ml-3">
+                <p>Contract Details</p>
+              </div>
+            </div>
+          </div>
+          <div class="collapse" id="collapseDriver">
+            <div class="card card-body">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex">
+                <strong class="mr-2">Cell Phone Number:</strong><%= @hired_driver.phone_number%>
+              </div>
+              <div class="d-flex">
+                <strong class="mr-2">Email:</strong>  <%= @hired_driver.email%>     
+              </div>
+            </div>
+            <br>
+            <strong>About:</strong> <%= @hired_driver.about%>
+            </div>
+          </div>
+          <div class="collapse" id="collapseContract">
+            <div class="card card-body">
+            TBD TBD TBD
+            </div>
+          </div>
+        <%end%>
+        <! --- Weekly Schedule ---->
+        <% today = "10/02/2020".to_date %>
+        <% current_week = [*today.at_beginning_of_week..today.at_end_of_week] %>
+        <% @days_from_current_week = current_week.map {|date| date.strftime("%A, %m/%d/%Y")} %>
+
+        <div class="card-dash p-3 mt-3 mb-3">
+
+          <div class="card p-2" style="border: none;">
+            <div class="d-flex justify-content-between" style="background: red; padding: 14px; color: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <h3 style="font-size: 32px;">WEEKLY SCHEDULE</h3>
+            <% @price = 0 %>
+            <% @weekly_schedule.each { |ride| @price += ride.price }  %>
+              <div class="d-flex justify-content-between align-items-center">
+                <p>Total Price: $<%= @price %></p>
+                <%= render 'riders/update' %>
+              </div>
+            </div>
+            <br>
+
+            <div>
+              <% if @weekly_schedule %>
+                <% @days_from_current_week.each do |date| %>
+                  <p><%= date %></p>
+                  <% @weekly_schedule.each do |ride| %>
+                    <% if ride.date == date %>
+                      <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                        <div class="card-body d-flex align-items-center" style="padding: 0.50rem;">
+                          <div class="time-grey mr-3" style="background: #8080803d; padding: 16px;">
+                            <p><%= ride.time.strftime("%I:%M%p") %></p>
+                          </div>
+                          <div class="" style="font-size: 14px;"><p>
+                            <p>PICK UP: <%= ride.pick_up %></p>
+                            <p>DROP OFF: <%= ride.drop_off %></p>
+                            <p>PRICE: $<%= ride.price %></p>
+                          </div>
+                          <%= link_to ride_path(ride), style: "color: red; position: absolute; right: 65px;", method: :patch do %>
+                            <i class="fas fa-times"></i>
+                          <% end %>
                         </div>
-                        <div class="" style="font-size: 14px;"><p>
-                          <p>PICK UP: <%= ride.pick_up %></p>
-                          <p>DROP OFF: <%= ride.drop_off %></p>
-                          <p>PRICE: $<%= ride.price %></p>
-                        </div>
-                        <%= link_to ride_path(ride), style: "color: red; position: absolute; right: 65px;", method: :patch do %>
-                          <i class="fas fa-times"></i>
-                        <% end %>
-                      </div>
-                    </div> 
+                      </div> 
+                    <% end %>
                   <% end %>
+                  <br>
                 <% end %>
-                <br>
               <% end %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
