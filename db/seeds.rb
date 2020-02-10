@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Rider.destroy_all
+Driver.destroy_all
 Ride.destroy_all
 
 tayler = Rider.create!(first_name: "Tayler", last_name: "Johnson", address: "427 N Irving Blvd, Los Angeles, CA 90004", photo: 'https://avatars2.githubusercontent.com/u/51970661?s=460&v=4', email: "tayler@me.com", password: "123456", schedule_submitted: false)

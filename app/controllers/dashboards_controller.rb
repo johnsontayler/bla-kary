@@ -14,7 +14,7 @@ class DashboardsController < ApplicationController
   private 
 
   def only_rides_of_current_week
-    today = Date.today
+    today = "10/02/2020".to_date
     current_week = [*today.at_beginning_of_week..today.at_end_of_week]
     days_from_current_week = current_week.map {|date| date.strftime("%A, %m/%d/%Y")}
 
