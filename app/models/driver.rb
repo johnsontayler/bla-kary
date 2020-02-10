@@ -7,9 +7,9 @@ class Driver < ApplicationRecord
   has_many :contracts
 
   def has_a_bid?(rider)
-    user = self
+    driver = self
     Contract.where(
-      rider_id: rider.id, driver_id: user.id, bid: true
+      rider_id: rider.id, driver_id: driver.id, bid: true
     ).exists?
   end
 

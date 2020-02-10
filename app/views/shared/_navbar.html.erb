@@ -3,7 +3,7 @@
 </div>
 
 <div class="navbar-red-alert">
-  <%= link_to "Schedule Your Ride Today!", new_user_session_path, class: "nav-link" %>
+  <%= link_to "Schedule Your Ride Today!", new_rider_registration_path, class: "nav-link" %>
 </div>
 
 <div class="navbar navbar-expand-sm navbar-light navbar-custom">
@@ -17,7 +17,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
+      <% if rider_signed_in? %>
         <li class="nav-item">
           <%= link_to "HOME", "/home", class: "nav-link" %>
         </li>
@@ -31,7 +31,7 @@
           <%= image_tag (current_user.photo) , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_rider_session, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
@@ -39,7 +39,7 @@
           <%= link_to "DRIVERS", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "RIDERS", new_user_session_path, class: "nav-link" %>
+          <%= link_to "RIDERS", new_rider_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "ABOUT", "/", class: "nav-link" %>
@@ -48,7 +48,7 @@
           <%= link_to "CONTACT", "/", class: "nav-link" %>
         </li>
         <li class="nav-item nav-login">
-          <%= link_to "LOGIN", new_user_session_path, class: "nav-link" %>
+          <%= link_to "LOGIN", new_rider_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToRiders < ActiveRecord::Migration[5.2]
-  def self.up
-    change_table :riders do |t|
+class DeviseCreateDrivers < ActiveRecord::Migration[5.2]
+  def change
+    create_table :drivers do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -34,18 +34,12 @@ class AddDeviseToRiders < ActiveRecord::Migration[5.2]
 
 
       # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.timestamps null: false
     end
 
-    add_index :riders, :email,                unique: true
-    add_index :riders, :reset_password_token, unique: true
-    # add_index :riders, :confirmation_token,   unique: true
-    # add_index :riders, :unlock_token,         unique: true
-  end
-
-  def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    add_index :drivers, :email,                unique: true
+    add_index :drivers, :reset_password_token, unique: true
+    # add_index :drivers, :confirmation_token,   unique: true
+    # add_index :drivers, :unlock_token,         unique: true
   end
 end

@@ -72,7 +72,7 @@
           <% @weekly_schedule.each { |ride| @price += ride.price }  %>
             <div class="d-flex justify-content-between align-items-center">
               <p>Total Price: $<%= @price %></p>
-              <%= render 'users/update' %>
+              <%= render 'riders/update' %>
             </div>
           </div>
           <br>

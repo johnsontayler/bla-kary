@@ -1,4 +1,4 @@
-class AddAttributesRider < ActiveRecord::Migration[5.2]
+class AddAttributesToRiders < ActiveRecord::Migration[5.2]
   def change
     add_column :riders, :first_name, :string
     add_column :riders, :last_name, :string
