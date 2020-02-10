@@ -3,7 +3,7 @@ class RidesController < ApplicationController
   end
 
   def create
-    @rider = Rider.find(current_user.id)
+    @rider = Rider.find(current_rider.id)
     @ride = Ride.new(ride_params)
     @ride.rider = @rider
     redirect_to "/home" if @ride.save

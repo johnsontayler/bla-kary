@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :contracts, only: [ :create ]
   end
 
+  resources :riders, only: [:update]
+
   resources :dashboards, only: [ :index, :update ]
 
   resources :rides, only: [:index, :new, :create, :update]

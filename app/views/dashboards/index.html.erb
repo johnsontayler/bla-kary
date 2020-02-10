@@ -11,9 +11,9 @@
 
         <! --- Header ---->
         <div class="cards-prof-bar">
-          <%= image_tag (current_user.photo), class: "avatar-dashboard" %>
+          <%= image_tag (current_rider.photo), class: "avatar-dashboard" %>
           <div class="card-profile">
-            <p class="mb-1"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
+            <p class="mb-1"><strong><%= current_rider.first_name %> <%= current_rider.last_name %></strong></p>
             <p>Contact: <strong>Mobile</strong> / Social</p>
           </div>
         </div>
@@ -32,7 +32,7 @@
     <! ---- Hired Driver ------>
     <div class="d-flex justify-content-between">
       <div class="rider-card" data-toggle="collapse" data-target="#collapseExample" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
-        <%= image_tag (current_user.photo), class: "avatar-large" %>
+        <%= image_tag (current_rider.photo), class: "avatar-large" %>
         <div class="d-flex flex-column ml-3">
           <p class="mb-1">Week's Driver</p>
           
