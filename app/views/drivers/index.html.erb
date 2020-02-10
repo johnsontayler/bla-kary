@@ -3,7 +3,7 @@
   
   <div class="row mt-2" style="justify-content: center;">
     <% @drivers.each do |driver| %>
-      <div class="driver-card" style="position: relative; margin-bottom: 18px; width: 14rem; height: 22rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; margin-right: 18px;">
+      <div class="driver-card" data-toggle="modal" data-target="#driverModal<%=driver.id%>" style="position: relative; margin-bottom: 18px; width: 14rem; height: 22rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; margin-right: 18px;">
         <%= image_tag (driver.photo), class: "card-img-top", style: "height: 40%; object-fit: cover;" %>
         <div style="align-items: center; width: 40px; height: 40px; background-image: linear-gradient(to bottom right, #ff0d0d, #914141); box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50%; position: absolute; top: 120px; right: 15px; display: flex; flex-direction: column; color: white; justify-content: center;">
             <i class="fas fa-medal" style="font-size: 16px; margin-top: 4px;"></i>
@@ -19,6 +19,47 @@
           <%= button_to "Hire Now", rider_accepted_contract_path(driver), remote: true, method: :patch, data: {:confirm => 'Send request to hire this driver?'}, class: "col-12 btn btn-danger mt-2" %>
         </div>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="driverModal<%= driver.id%>" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                Reviews <i class="fas fa-medal" style="font-size: 16px; margin-top: 4px;"></i>
+              </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul style="list-style-type:none; padding-left: 0px; text-align: left;">
+                <br>
+                <li class="d-flex mb-2 justify-content-between align-items-center profile-modal-li" style= "color: black;">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= link_to "#", class: "nostyle mr-2" do  %>
+                      <img src="<%= driver.photo %>" alt="" class="avatar">
+                    <% end %>
+                    <div class="d-flex flex-column">
+                      <%= driver.first_name %> is the best! Got me everywhere I needed to go.
+                    </div>
+                  </div>
+                </li>
+                <li class="d-flex mb-2 justify-content-between align-items-center profile-modal-li" style= "color: black;">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= link_to "#", class: "nostyle mr-2" do  %>
+                      <img src="<%= driver.photo %>" alt="" class="avatar">
+                    <% end %>
+                    <div class="d-flex flex-column">
+                      <%= driver.first_name %> is hilarious and a great person. Fun convos!
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <% end %>
   </div>
 </div>

@@ -16,7 +16,14 @@
         <p>Rides: <%= @weekly_schedule.count %> | Total Price: $<%= @total_price %> </p>
       </div>
 
-      <% if @driver %>
+      <div class="rider-card-actions">
+        <%= render 'contracts/create', rider: rider %>
+        <a href="#">Save <i class="far fa-heart"></i></a>
+      </div>
+
+      <%
+=begin%>
+ <% if @driver %>
         <div class="rider-card-actions">
           <% if @driver.has_a_bid?(rider) %>
             <%= render 'contracts/destroy', rider: rider %>
@@ -25,7 +32,9 @@
           <% end %>
           <a href="#">Save <i class="far fa-heart"></i></a>
         </div>
-      <% end %>
+      <% end %> 
+<%
+=end%>
     </div>
     <div class="collapse" id="collapseRider<%= rider.id %>">
       <div class="card card-body" style="padding: 0px">
