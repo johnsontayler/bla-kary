@@ -9,6 +9,7 @@
 Rider.destroy_all
 Driver.destroy_all
 Ride.destroy_all
+Contract.destroy_all
 
 tayler = Rider.create!(first_name: "Tayler", last_name: "Johnson", address: "427 N Irving Blvd, Los Angeles, CA 90004", photo: 'https://avatars2.githubusercontent.com/u/51970661?s=460&v=4', email: "tayler@me.com", password: "123456", phone_number: "(818) 292-5872", schedule_submitted: false)
 ignacio = Rider.create!(first_name: "Ignacio", last_name: "Tabare", address: "427 N Irving Blvd, Los Angeles, CA 90004", photo: 'https://pm1.narvii.com/5866/45cc61eb9e3eaefdc26be045e9f9fbfdf916f45b_hq.jpg', email: "ignacio@me.com", password: "123456", phone_number: "(818) 292-5872", schedule_submitted: true)
@@ -41,7 +42,6 @@ Contract.create!(rider: tayler, driver: mark, bid: true, bid_comment: "Hey Tayle
 Contract.create!(rider: tayler, driver: ryder, bid: true, bid_comment: "Hey Tayler. I'd love to be your driver for your weekly schedule. I'm respectful, responsive, and know the streets of LA really well!")
 Contract.create!(rider: tayler, driver: keith, bid: true, bid_comment: "Hey Tayler. I'd love to be your driver for your weekly schedule. I'm respectful, responsive, and know the streets of LA really well!")
 Contract.create!(rider: tayler, driver: milly, bid: true, bid_comment: "Hey Tayler. I'd love to be your driver for your weekly schedule. I'm respectful, responsive, and know the streets of LA really well!")
-Contract.create!(rider: tayler, driver: john, bid: true, bid_comment: "Hey Tayler. I'd love to be your driver for your weekly schedule. I'm respectful, responsive, and know the streets of LA really well!")
 
 Ride.create!(date: "Monday, 02/10/2020", time: Time.now, pick_up: "427 N Irving Blvd, Los Angeles, CA 90004", drop_off: "509 Myrtle Ct, Westlake, CA 91322", price: 20, rider: ignacio)
 Ride.create!(date: "Tuesday, 02/11/2020", time: Time.now, pick_up: "427 N Irving Blvd, Los Angeles, CA 90004", drop_off: "509 Myrtle Ct, Westlake, CA 91322", price: 14, rider: ignacio)

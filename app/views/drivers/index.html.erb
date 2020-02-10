@@ -3,15 +3,22 @@
   
   <div class="row mt-2" style="justify-content: center;">
     <% @drivers.each do |driver| %>
-    <div class="driver-card" style="    margin-bottom: 18px; width: 14rem; height: 18rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 3px; margin-right: 18px;">
-      <%= image_tag (driver.photo), class: "card-img-top", style: "    height: 51%;
-    object-fit: cover;" %>
-      <div class="driver-card-body" style="padding: 15px;
-    font-size: 13px;">
-        <h5 class="card-title"><%= driver.first_name%> <%= driver.last_name%></h5>
-        <p class="card-text"><%= driver.about %></p>
+      <div class="driver-card" style="position: relative; margin-bottom: 18px; width: 14rem; height: 22rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; margin-right: 18px;">
+        <%= image_tag (driver.photo), class: "card-img-top", style: "height: 40%; object-fit: cover;" %>
+        <div style="align-items: center; width: 40px; height: 40px; background-image: linear-gradient(to bottom right, #ff0d0d, #914141); box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50%; position: absolute; top: 120px; right: 15px; display: flex; flex-direction: column; color: white; justify-content: center;">
+            <i class="fas fa-medal" style="font-size: 16px; margin-top: 4px;"></i>
+            <p style="font-size: 10px;">4.8</p>
+        </div>
+        <div class="driver-card-body" style="padding: 15px; font-size: 13px;">
+          <h5 class="card-title"><%= driver.first_name%> <%= driver.last_name%></h5>
+          <div class="d-flex justify-content-between mb-2" style="font-size: 10px;">
+            <p class="mr-2"><strong>Member:</strong> 3 Months</p>
+            <p class="mr-2"><strong>Rides:</strong> 5,000</p>
+          </div>
+          <p class="card-text">Hi! I'm <%= driver.first_name %>. I've been a professional driver for 10+ years now. I love this job, and I'd be happy to work with you!</p>
+          <%= button_to "Hire Now", rider_accepted_contract_path(driver), remote: true, method: :patch, data: {:confirm => 'Send request to hire this driver?'}, class: "col-12 btn btn-danger mt-2" %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

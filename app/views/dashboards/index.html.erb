@@ -59,11 +59,10 @@
           </div>
         <% elsif @hired_driver %>
           <div class="d-flex justify-content-between">
-            <div class="rider-card" data-toggle="collapse" data-target="#collapseDriver" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #e6d1d1); color: white;">
-              <%= image_tag (@hired_driver.photo), class: "avatar-large" %>
+            <div class="rider-card" data-toggle="collapse" data-target="#collapseDriver" style="width: 48%; background-image: linear-gradient(to bottom right, #ff0d0d, #dd7b7b); color: white;">
+              <%= image_tag (@hired_driver.photo), class: "avatar-large", style: "box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" %>
               <div class="d-flex flex-column ml-3">
                 <p class="mb-1">Week's Driver</p>
-                
                 <div class="d-flex align-items-end">
                   <%= @hired_driver.first_name%> <%= @hired_driver.last_name%>
                   <div style="font-size: 10px;"><i class="fas fa-medal ml-2"></i> 4.8 </div>

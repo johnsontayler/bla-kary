@@ -21,7 +21,7 @@ class ContractsController < ApplicationController
   def rider_accepted
     @driver = Driver.find(params[:id])
     @rider = Rider.find(current_rider.id)
-    @contract = @rider.contracts.where(driver_id: @driver.id)
+    @contract = @rider.contracts.where(driver_id: @driver.id).first_or_create
     @contract.update(rider_accepted: true)
   end
 
