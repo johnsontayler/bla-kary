@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :drivers
+
   devise_for :riders
+  devise_for :drivers
+  devise_group :user, contains: [:rider, :driver]
 
   resources :riders, only: [ :index ] do
     resources :contracts, only: [ :create ]

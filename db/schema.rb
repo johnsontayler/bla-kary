@@ -29,43 +29,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_225848) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "drivers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "photo"
-    t.string "address"
-    t.text "about"
-    t.string "phone_number"
-    t.index ["email"], name: "index_drivers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true
-  end
-
-  create_table "riders", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "photo"
-    t.string "address"
-    t.text "about"
-    t.string "phone_number"
-    t.boolean "schedule_submitted", default: false
-    t.index ["email"], name: "index_riders_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_riders_on_reset_password_token", unique: true
-  end
-
   create_table "rides", force: :cascade do |t|
     t.string "date"
     t.time "time"
@@ -76,6 +39,25 @@ ActiveRecord::Schema.define(version: 2020_02_10_225848) do
     t.boolean "weekly_schedule", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "users"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "photo"
+    t.string "address"
+    t.text "about"
+    t.string "phone_number"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

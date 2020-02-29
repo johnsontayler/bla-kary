@@ -1,11 +1,19 @@
 # frozen_string_literal: true
 
-class DeviseCreateDrivers < ActiveRecord::Migration[5.2]
+class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :drivers do |t|
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :first_name
+      t.string :last_name
+      t.string :photo
+      t.string :address
+      t.text :about
+      t.string :phone_number
+      t.boolean :schedule_submitted, default: false
+      t.string :type
 
       ## Recoverable
       t.string   :reset_password_token
@@ -33,13 +41,12 @@ class DeviseCreateDrivers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      # Uncomment below if timestamps were not included in your original model.
       t.timestamps null: false
     end
 
-    add_index :drivers, :email,                unique: true
-    add_index :drivers, :reset_password_token, unique: true
-    # add_index :drivers, :confirmation_token,   unique: true
-    # add_index :drivers, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end
